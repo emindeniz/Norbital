@@ -17012,19 +17012,15 @@ mean_absolute_error for the baseline model 32.5766413074
 <span class="n">X_clouds</span><span class="p">,</span> <span class="n">y_clouds</span> <span class="o">=</span> <span class="n">create_dataset</span><span class="p">(</span><span class="n">data</span><span class="p">[</span><span class="s1">&#39;cloud.indicator&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">as_matrix</span><span class="p">(),</span><span class="n">look_back</span><span class="p">,</span><span class="mi">1</span><span class="p">)</span>
 
 <span class="n">X</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">zeros</span><span class="p">(</span><span class="n">shape</span><span class="o">=</span><span class="p">(</span><span class="n">X_clouds</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span><span class="n">X_clouds</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">1</span><span class="p">],</span><span class="mi">2</span><span class="p">))</span>
-<span class="c1">#X = np.concatenate([X_cars,X_clouds],axis=0)</span>
 <span class="n">X_cars</span> <span class="o">=</span> <span class="n">MinMaxScaler</span><span class="p">(</span><span class="n">feature_range</span><span class="o">=</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">))</span><span class="o">.</span><span class="n">fit_transform</span><span class="p">(</span><span class="n">X_cars</span><span class="p">)</span>
-<span class="c1">#X = np.reshape(X, (X.shape[0], 1, X.shape[1]))</span>
 <span class="n">X</span><span class="p">[:,</span><span class="mi">1</span><span class="p">:,</span><span class="mi">0</span><span class="p">]</span><span class="o">=</span><span class="n">X_cars</span>
 <span class="n">X</span><span class="p">[:,:,</span><span class="mi">1</span><span class="p">]</span><span class="o">=</span><span class="n">X_clouds</span>
-
 
 
 <span class="n">train_split</span><span class="o">=</span><span class="mi">2000</span>
 <span class="n">train_set</span><span class="p">,</span><span class="n">valid_set</span><span class="p">,</span><span class="n">train_labels</span><span class="p">,</span><span class="n">valid_labels</span> <span class="o">=</span> <span class="n">X</span><span class="p">[:</span><span class="n">train_split</span><span class="p">],</span><span class="n">X</span><span class="p">[</span><span class="n">train_split</span><span class="p">:],</span><span class="n">y_cars</span><span class="p">[:</span><span class="n">train_split</span><span class="p">],</span><span class="n">y_cars</span><span class="p">[</span><span class="n">train_split</span><span class="p">:]</span>
 
-<span class="c1"># train_set = np.reshape(train_set, (train_set.shape[0], 1, train_set.shape[1]))</span>
-<span class="c1"># valid_set = np.reshape(valid_set, (valid_set.shape[0], 1, train_set.shape[1]))</span>
+
 <span class="nb">print</span><span class="p">(</span><span class="n">train_set</span><span class="o">.</span><span class="n">shape</span><span class="p">,</span><span class="n">train_labels</span><span class="o">.</span><span class="n">shape</span><span class="p">)</span>
 <span class="nb">print</span><span class="p">(</span><span class="n">valid_set</span><span class="o">.</span><span class="n">shape</span><span class="p">,</span><span class="n">valid_labels</span><span class="o">.</span><span class="n">shape</span><span class="p">)</span>
 <span class="nb">print</span><span class="p">(</span><span class="n">train_set</span><span class="p">[</span><span class="mi">1</span><span class="p">])</span>
